@@ -1,0 +1,48 @@
+<div
+  class="panel panel-primary"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <div>
+    <div class="panel-heading">
+      <h2>My Orders List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Price</th>
+            <th>Mode Of Payment</th>
+            <th>State</th>
+            <th>User Cin</th>
+            <th>User FirstName</th>
+            <th>User LastName</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.price }}</td>
+            <td>{{ order.modeOfPayment }}</td>
+            <td>
+              <h2>{{ order.state }}</h2>
+            </td>
+            <td>{{ order.user.cin }}</td>
+            <td>{{ order.user.firstName }}</td>
+            <td>{{ order.user.lastName }}</td>
+            <td>
+              <button
+                (click)="deleteOrder(order.id)"
+                [disabled]="order.state !== 'Waiting'"
+              >
+                Delete Order
+              </button>
+              <button (click)="orderDetails(order.id)">Order Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

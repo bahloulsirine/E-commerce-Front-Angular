@@ -1,0 +1,46 @@
+.navbar {
+  background-color: #a04de4;
+  text-align: center;
+}
+
+.navbar ul {
+  background-color: transparent;
+  display: inline-flex;
+  list-style: none;
+  color: rgb(145, 11, 11);
+}
+.navbar ul a {
+  color: rgb(9, 14, 19);
+  list-style-type: circle;
+  display: inline-block;
+  text-transform: inherit;
+  text-align: center;
+  font-family: "Arial ";
+  margin: 2px;
+  padding: 7px;
+  border: 4px;
+}
+.navbar ul a:hover {
+  background-color: rgb(160, 105, 130);
+  text-decoration: wavy;
+  color: rgb(8, 8, 8);
+  border-radius: 3px;
+}
+
+.sub-menu {
+  display: none;
+}
+.navbar ul li:hover .sub-menu {
+  display: block;
+  position: absolute;
+  background-color: rgb(160, 105, 130);
+}
+.navbar ul li:hover .sub-menu ul {
+  display: block;
+}
+.navbar ul li:hover .sub-menu ul li {
+  border-bottom: 1px dotted #fff;
+  background: transparent;
+
+  text-align: left;
+}

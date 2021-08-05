@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Promotions List</h2>
+    <h3>Promotion Percentage={{ percentage }}%</h3>
+    <button (click)="addPromotion()" class="btn btn-danger">
+      Add Promotions Articles
+    </button>
+    <button (click)="deletePromotions()" class="btn btn-danger">
+      Delete all This Promotions
+    </button>
+  </div>
+  <div class="panel-body" *ngIf="!submitted">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Promotion percentage</th>
+          <th>Article Code</th>
+          <th>Article Subcategory</th>
+          <th>Article Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td>{{ percentage }}</td>
+        <tr *ngFor="let article of articles">
+          <td></td>
+          <td>{{ article.code }}</td>
+          <td>{{ article.subCategory.name }}</td>
+          <td>{{ article.price }}</td>
+          <td>
+            <button
+              (click)="deletePromotionArticle(article.id)"
+              class="btn btn-danger"
+            >
+              Delete Promotion
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="submitted">
+    <h4>You delete this Promotion successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  </div>
+</div>

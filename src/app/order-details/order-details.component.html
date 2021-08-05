@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Order Details</h1>
+    <h2>
+      Price:
+      <h3>{{ order.price }} DT</h3>
+    </h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Article Code</th>
+          <th>Article Price</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderDetails">
+          <td>{{ order.article.code }}</td>
+          <td>{{ order.article.price }}</td>
+          <td>{{ order.amount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

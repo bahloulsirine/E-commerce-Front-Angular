@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Insufficient Users List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last name</th>
+          <th>sex</th>
+          <th>Email</th>
+          <th>address</th>
+          <th>Cin</th>
+          <th>birthday</th>
+          <th>driverLicence</th>
+          <th>phoneNumber</th>
+          <th>Total Order</th>
+          <th>isEnabled</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.sex }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.cin }}</td>
+          <td>{{ user.birthday }}</td>
+          <td>{{ user.driverLicence }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>{{ user.totalOrder }}</td>
+          <td>{{ user.isEnabled }}</td>
+          <td>{{ user.role.role }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

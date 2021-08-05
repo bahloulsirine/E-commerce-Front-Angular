@@ -1,0 +1,47 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Articles List</h2>
+    <button (click)="addRecommendations()" class="btn btn-danger">
+      Add Recommendations
+    </button>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Stock</th>
+          <th>Description</th>
+          <th>Color</th>
+          <th>Weight</th>
+          <th>Price</th>
+          <th>TVA</th>
+          <th>Subcategory Name</th>
+          <th>Provider Cin</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles">
+          <td>{{ article.code }}</td>
+          <td>{{ article.stock }}</td>
+          <td>{{ article.description }}</td>
+          <td>{{ article.color }}</td>
+          <td>{{ article.weight }}</td>
+          <td>{{ article.price }}</td>
+          <td>{{ article.tva }}</td>
+          <td>{{ article.subCategory.name }}</td>
+          <td>{{ article.user.cin }}</td>
+          <td>
+            <button
+              (click)="deleteRecommendation(article.id)"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

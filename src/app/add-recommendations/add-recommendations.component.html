@@ -1,0 +1,27 @@
+<div
+  *ngIf="!submitted"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h3>Add Recommendations</h3>
+      <label for="name">Articles<span style="color: red">*</span></label>
+      <select
+        [(ngModel)]="recommendation.recommendationsIds"
+        name="articles"
+        class="form-control"
+        [multiple]="true"
+      >
+        <option *ngFor="let article of articles" [value]="article.id">
+          {{ article.code }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add Recommendations</button>
+  </form>
+</div>
+<div *ngIf="submitted">
+  <h4>You add Recommendations successfully!</h4>
+</div>

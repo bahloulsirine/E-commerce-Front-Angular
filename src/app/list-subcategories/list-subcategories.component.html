@@ -1,0 +1,40 @@
+<div
+  class="panel panel-primary"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <div>
+    <div class="panel-heading">
+      <h2>Subcategories List</h2>
+      <button (click)="addSubcategory()" class="btn btn-danger">
+        New Subcategory
+      </button>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>Category Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subcategory of subcategories">
+            <td>{{ subcategory.name }}</td>
+            <td>{{ subcategory.category.name }}</td>
+            <td>
+              <button
+                (click)="deleteSubcategory(subcategory.id)"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Articles List</h2>
+  </div>
+  <button type="submit" (click)="stock()" class="btn btn-success">
+    Insufficient Stock
+  </button>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Stock</th>
+          <th>Description</th>
+          <th>Color</th>
+          <th>Weight</th>
+          <th>Price</th>
+          <th>TVA</th>
+          <th>Subcategory Name</th>
+          <th>Provider Cin</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles">
+          <td>{{ article.code }}</td>
+          <td>{{ article.stock }}</td>
+          <td>{{ article.description }}</td>
+          <td>{{ article.color }}</td>
+          <td>{{ article.weight }}</td>
+          <td>{{ article.price }}</td>
+          <td>{{ article.tva }}</td>
+          <td>{{ article.subCategory.name }}</td>
+          <td>{{ article.user.cin }}</td>
+          <td>
+            <button (click)="deleteArticle(article.id)" class="btn btn-danger">
+              Delete
+            </button>
+            <button (click)="updateArticle(article.id)" class="btn btn-danger">
+              Update
+            </button>
+            <button (click)="recommendation(article.id)" class="btn btn-danger">
+              Recommendations
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

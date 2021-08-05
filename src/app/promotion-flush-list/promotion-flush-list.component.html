@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Promotions Flush List</h2>
+    <button (click)="deletePromotionFlush()" class="btn btn-danger">
+      Delete Promotions Flush
+    </button>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Promotion percentage</th>
+          <th>Promotion Expiration</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let promotion of promotions">
+          <td>{{ promotion.percentagePromotion }}</td>
+          <td>{{ promotion.promotionExpiration }}</td>
+          <td>
+            <button
+              (click)="getPromotionPercentage(promotion.id)"
+              class="btn btn-danger"
+            >
+              Details
+            </button>
+            <button
+              (click)="deletePromotionById(promotion.id)"
+              class="btn btn-danger"
+            >
+              Delete This Promotion Flush
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

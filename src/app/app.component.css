@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(221, 179, 201);
+  font-family: "Comic Sans MS", "Trebuchet MS", Georgia, serif;
+}
+h1 {
+  color: #817b78;
+  text-transform: capitalize;
+  font-family: "Script MT Bold";
+}

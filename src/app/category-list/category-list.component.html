@@ -1,0 +1,38 @@
+<div
+  class="panel panel-primary"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <div class="form-group">
+    <div class="panel-heading">
+      <h2>Categories List</h2>
+      <button (click)="addCategory()" class="btn btn-danger">
+        New Category
+      </button>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.name }}</td>
+            <td>
+              <button
+                (click)="deleteCategory(category.id)"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

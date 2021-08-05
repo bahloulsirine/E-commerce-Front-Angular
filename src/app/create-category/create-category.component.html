@@ -1,0 +1,26 @@
+<div
+  *ngIf="!submitted"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h3>Create New Category</h3>
+      <label for="name">Category Name<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="Name"
+        required
+        [(ngModel)]="category.name"
+        name="Name"
+      />
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+<div *ngIf="submitted">
+  <h4>You create your Category successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

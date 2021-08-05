@@ -1,0 +1,121 @@
+<div
+  *ngIf="!submitted"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h3>Create New Article</h3>
+      <label for="name">Code<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="code"
+        required
+        [(ngModel)]="article.code"
+        name="code"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Stock<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="stock"
+        required
+        [(ngModel)]="article.stock"
+        name="stock"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Description<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        required
+        [(ngModel)]="article.description"
+        name="description"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Color<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="color"
+        required
+        [(ngModel)]="article.color"
+        name="color"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Weight<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="weight"
+        required
+        [(ngModel)]="article.weight"
+        name="weight"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Price<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="price"
+        required
+        [(ngModel)]="article.price"
+        name="price"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name">TVA<span style="color: red">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="tva"
+        required
+        [(ngModel)]="article.tva"
+        name="tva"
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">Provider<span style="color: red">*</span></label>
+      <select [(ngModel)]="article.userId" name="user" class="form-control">
+        <option *ngFor="let user of users" [value]="user.id">
+          {{ user.firstName }} {{ user.lastName }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="name"
+        >Subcategory Name<span style="color: red">*</span></label
+      >
+      <select
+        [(ngModel)]="article.subCategoryId"
+        name="sub"
+        class="form-control"
+      >
+        <option *ngFor="let sub of subCategories" [value]="sub.id">
+          {{ sub.name }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+<div *ngIf="submitted">
+  <h4>You create your article successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

@@ -1,0 +1,24 @@
+<div style="width: 400px" fxLayoutAlign="center center" fxFlexFill>
+  <form>
+    <div class="form-group">
+      <label for="name"
+        ><h3>Stock</h3>
+        <span style="color: red">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="totalOrder"
+        required
+        [(ngModel)]="stock"
+        name="totalOrder"
+      />
+    </div>
+    <button type="submit" (click)="getArticles()" class="btn btn-success">
+      Get Insufficient Articles
+    </button>
+    <button type="submit" (click)="getUsers()" class="btn btn-success">
+      Get Insufficient Users
+    </button>
+  </form>
+</div>

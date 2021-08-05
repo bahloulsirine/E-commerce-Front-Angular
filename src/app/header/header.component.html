@@ -1,0 +1,125 @@
+<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+
+<nav class="navbar navbar-expand-sm">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <!-- <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+      <a routerLink="userList" class="nav-link" routerLinkActive="active"
+        ><strong> <h4>User List</h4></strong></a
+      >
+    </li> -->
+
+    <li class="nav-item-img">
+      <a>
+        <img
+          [src]="basket"
+          fxLayoutAlign="center center"
+          routerLink="promotionFlushList"
+          class="nav-link"
+          routerLinkActive="active"
+        />
+      </a>
+    </li>
+    <li class="nav-item-img">
+      <a>
+        <img
+          [src]="menu"
+          fxLayoutAlign="center center"
+          routerLink="promotionFlushList"
+          class="nav-link"
+          routerLinkActive="active"
+        />
+      </a>
+      <div class="sub-menu">
+        <ul>
+          <li class="nav-item">
+            <a routerLink="update" class="nav-link" routerLinkActive="active"
+              >My Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="myOrders" class="nav-link" routerLinkActive="active"
+              >My Orders
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a routerLink="userList" class="nav-link" routerLinkActive="active"
+              >Users List
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="createArticle"
+              class="nav-link"
+              routerLinkActive="active"
+              >Create Article
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="articleList"
+              class="nav-link"
+              routerLinkActive="active"
+              >Articles List
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="categoryList"
+              class="nav-link"
+              routerLinkActive="active"
+              >Categories List
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="subcategoriesList"
+              class="nav-link"
+              routerLinkActive="active"
+              >Subcategories List
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a routerLink="oderList" class="nav-link" routerLinkActive="active"
+              >Orders List
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="createPromotion"
+              class="nav-link"
+              routerLinkActive="active"
+              >Create Promotion
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="promotionList"
+              class="nav-link"
+              routerLinkActive="active"
+              >Promotions List
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="createPromotionFlush"
+              class="nav-link"
+              routerLinkActive="active"
+              >Create Promotion Flush
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+            <a
+              routerLink="promotionFlushList"
+              class="nav-link"
+              routerLinkActive="active"
+              >Promotions Flush List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
