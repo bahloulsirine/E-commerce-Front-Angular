@@ -89,7 +89,7 @@
         name="tva"
       />
     </div>
-    <div class="form-group">
+    <div class="form-group" *ngIf="authService.hasRole('ADMIN')">
       <label for="name">Provider<span style="color: red">*</span></label>
       <select [(ngModel)]="article.userId" name="user" class="form-control">
         <option *ngFor="let user of users" [value]="user.id">

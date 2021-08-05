@@ -1,3 +1,4 @@
+import { AuthService } from './../shared/service/auth.service';
 import { SubCategory } from './../../models/subcategory.model';
 import { User } from './../../models/user';
 import { UserService } from './../shared/service/user.service';
@@ -16,11 +17,13 @@ export class CreateArticleComponent implements OnInit {
   submitted = false;
   subCategories: SubCategory[];
   users: User[];
+  provider: User;
 
   constructor(
     private articleService: ArticleService,
     private subcategoryService: SubcategoryService,
-    private userService: UserService
+    private userService: UserService,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -29,11 +32,20 @@ export class CreateArticleComponent implements OnInit {
     this.getProviders();
   }
   onSubmit() {
-    this.save();
+    if (this.authService.hasRole('PROVIDER')) {
+      this.userService.getCurrentUser().subscribe(
+        (data: any) => {
+          this.provider = data;
+          this.article.userId = this.provider.id;
+          this.save();
+        },
+        (error) => {
+          console.log('something went wrong');
+        }
+      );
+    }
   }
   save() {
-    console.log(this.article);
-
     this.articleService.createArticle(this.article).subscribe((data) => {
       //console.log(data);
       this.submitted = true;
@@ -49,9 +61,11 @@ export class CreateArticleComponent implements OnInit {
   }
 
   getProviders() {
-    this.userService.getProviders().subscribe((data: User[]) => {
-      this.users = data;
-    });
+    if (this.authService.hasRole('ADMIN')) {
+      this.userService.getProviders().subscribe((data: User[]) => {
+        this.users = data;
+      });
+    }
   }
 
   resetData() {

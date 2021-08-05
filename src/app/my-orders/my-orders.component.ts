@@ -23,11 +23,15 @@ export class MyOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetUser();
+    console.log(this.user);
+
     this.userService.getCurrentUser().subscribe(
       (data: any) => {
         console.log(data);
         this.user = data;
         this.id = this.user.id;
+        console.log(this.id);
+
         this.getMyOrders();
       },
       (error) => {

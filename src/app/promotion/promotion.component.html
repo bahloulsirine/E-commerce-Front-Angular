@@ -1,42 +1,56 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h2>Promotions List</h2>
-    <div class="form-group">
-      <label for="name">Percentage</label>
-      <input
-        type="text"
-        class="form-control"
-        id="per"
-        required
-        [(ngModel)]="percentage"
-        name="per"
-      />
-      <button (click)="getPromotionPercentage()" class="btn btn-danger">
-        Get {{ percentage }} % Promotions
-      </button>
+<div
+  class="panel panel-primary"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <div>
+    <div class="panel-heading">
+      <a
+        routerLinkActive="active"
+        style="color: rgb(235, 25, 154)"
+        fxLayoutAlign="center center"
+      >
+        <h2>Promotions List</h2></a
+      >
+
+      <div class="form-group">
+        <label for="name">Percentage</label>
+        <input
+          type="text"
+          class="form-control"
+          id="per"
+          required
+          [(ngModel)]="percentage"
+          name="per"
+        />
+        <button (click)="getPromotionPercentage()">
+          Get {{ percentage }} % Promotions
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Promotion percentage</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let promotion of promotions">
-          <td>{{ promotion.percentagePromotion }}</td>
-          <td>
-            <button
-              (click)="deletePromotion(promotion.id)"
-              class="btn btn-danger"
-            >
-              Delete Promotion
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Promotion percentage</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let promotion of promotions">
+            <td>{{ promotion.percentagePromotion }}</td>
+            <td>
+              <button
+                (click)="deletePromotion(promotion.id)"
+                class="btn btn-danger"
+              >
+                Delete Promotion
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

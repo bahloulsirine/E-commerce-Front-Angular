@@ -47,7 +47,12 @@
               >Users List
             </a>
           </li>
-          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+          <li
+            *ngIf="
+              authService.hasRole('ADMIN') || authService.hasRole('PROVIDER')
+            "
+            class="nav-item"
+          >
             <a
               routerLink="createArticle"
               class="nav-link"
