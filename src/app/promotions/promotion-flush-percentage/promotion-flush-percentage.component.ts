@@ -32,6 +32,7 @@ export class PromotionFlushPercentageComponent implements OnInit {
       .subscribe((data: PromotionFlush) => {
         this.promotionFlush = data;
         this.articles = this.promotionFlush.articles;
+        console.log(this.articles);
       });
   }
   deletePromotionArticle(id: number) {

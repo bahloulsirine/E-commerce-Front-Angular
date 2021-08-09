@@ -36,4 +36,8 @@ export class AuthService {
     }
     return false;
   }
+  loggedIn() {
+    //return true if token is present on localStorage
+    return !!localStorage.getItem('token');
+  }
 }

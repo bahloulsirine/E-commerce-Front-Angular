@@ -80,6 +80,8 @@ export class CreateArticleComponent implements OnInit {
       subCategoryId: null,
       userId: null,
       tva: null,
+      name: '',
+      url: '',
     };
   }
 }

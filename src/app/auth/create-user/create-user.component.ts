@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { JwtResponse } from '../../../models/jwt.model';
 import { SignUpRequest, UserAuth } from '../../../models/user';
 import { UserService } from '../../shared/service/user.service';
@@ -16,7 +17,8 @@ export class CreateUserComponent implements OnInit {
   token: JwtResponse;
   constructor(
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -60,8 +62,7 @@ export class CreateUserComponent implements OnInit {
         this.token = data;
         this.authService.setToken(this.token.jwt);
         this.authService.setProfile(this.token.user);
-
-        this.submitted = true;
+        this.router.navigate(['/']);
       },
       (error) => {
         console.log('something went wrong');

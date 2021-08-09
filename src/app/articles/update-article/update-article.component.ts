@@ -61,6 +61,8 @@ export class UpdateArticleComponent implements OnInit {
       subCategory: null,
       color: '',
       tva: null,
+      name: '',
+      url: '',
     };
   }
 }

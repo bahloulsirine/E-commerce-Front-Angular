@@ -23,7 +23,7 @@ export class InsufficientStockArticlesComponent implements OnInit {
   }
   reloadData() {
     this.articleService
-      .getInsufficientStockArticles(this.stock)
+      .getInsufficientArticles(this.stock)
       .subscribe((data: Article[]) => {
         this.articles = data;
       });

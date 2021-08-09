@@ -1,4 +1,4 @@
-<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+<!-- <mat-slider min="1" max="100" step="1" value="1"></mat-slider> -->
 
 <nav class="navbar navbar-expand-sm">
   <!-- Links -->
@@ -8,13 +8,23 @@
         ><strong> <h4>User List</h4></strong></a
       >
     </li> -->
-
+    <li class="nav-item-img">
+      <a>
+        <img
+          [src]="home"
+          fxLayoutAlign="center center"
+          routerLink="body"
+          class="nav-link"
+          routerLinkActive="active"
+        />
+      </a>
+    </li>
     <li class="nav-item-img">
       <a>
         <img
           [src]="basket"
           fxLayoutAlign="center center"
-          routerLink="promotionFlushList"
+          routerLink="basket"
           class="nav-link"
           routerLinkActive="active"
         />
@@ -121,8 +131,82 @@
               >Promotions Flush List
             </a>
           </li>
+          <li *ngIf="authService.hasRole('PROVIDER')" class="nav-item">
+            <a
+              routerLink="articleProviderList/{{ id }}"
+              class="nav-link"
+              routerLinkActive="active"
+              >My Articles
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="updatePassword"
+              class="nav-link"
+              routerLinkActive="active"
+              >Update Password
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="auth/login"
+              class="nav-link"
+              routerLinkActive="active"
+              ><button (click)="logOut()">
+                Logout<img [src]="logout" fxLayoutAlign="center center" />
+              </button>
+            </a>
+          </li>
         </ul>
       </div>
     </li>
   </ul>
 </nav>
+<!-- <div class="row">
+  <div class="col-sm-3">
+    <div class="card" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="https://images.unsplash.com/photo-1491604612772-6853927639ef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="https://images.unsplash.com/photo-1491604612772-6853927639ef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="https://images.unsplash.com/photo-1491604612772-6853927639ef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+      </div>
+    </div>
+  </div>
+</div> -->

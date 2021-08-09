@@ -1,18 +1,19 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Promotions List</h2>
+    <h2>Promotions Flush List</h2>
     <h3>Promotion Percentage={{ promotionFlush.percentagePromotion }}%</h3>
     <button (click)="addPromotion()" class="btn btn-danger">
       Add Promotions Articles
     </button>
   </div>
-  <div class="panel-body" *ngIf="!submitted">
+  <div class="panel-body">
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Promotion Percentage</th>
           <th>Promotion Expiration</th>
           <th>Article Code</th>
+          <th>Article Name</th>
           <th>Article Subcategory</th>
           <th>Article Price</th>
           <th>Action</th>
@@ -25,6 +26,7 @@
           <td></td>
           <td></td>
           <td>{{ article.code }}</td>
+          <td>{{ article.name }}</td>
           <td>{{ article.subCategory.name }}</td>
           <td>{{ article.price }}</td>
           <td>
@@ -38,9 +40,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div *ngIf="submitted">
-    <h4>You delete this Promotion successfully!</h4>
-    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
   </div>
 </div>

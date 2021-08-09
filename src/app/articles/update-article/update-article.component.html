@@ -13,6 +13,17 @@
         disabled
       />
     </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="article.name"
+        name="name"
+      />
+    </div>
 
     <div class="form-group">
       <label for="name">Stock</label>
@@ -85,8 +96,19 @@
         name="tva"
       />
     </div>
+    <div class="form-group">
+      <label for="name">Image</label>
+      <input
+        type="text"
+        class="form-control"
+        id="url"
+        required
+        [(ngModel)]="article.url"
+        name="url"
+      />
+    </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Update Article</button>
   </form>
 </div>
 <div *ngIf="submitted">

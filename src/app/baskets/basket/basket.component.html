@@ -1,0 +1,72 @@
+<div
+  class="panel panel-primary"
+  style="width: 400px"
+  fxLayoutAlign="center center"
+  fxFlexFill
+>
+  <div>
+    <div class="panel-heading">
+      <a style="color: rgb(235, 25, 154)" fxLayoutAlign="center center">
+        <h2>Basket</h2>
+        <h3>Total={{ priceSum }} DT</h3></a
+      >
+      <h6 style="color: rgb(158, 131, 144)">
+        Shipping costs not included at the moment
+      </h6>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ARTICLE</th>
+            <th>AMOUNT</th>
+            <th>UNIT PRICE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let basketArticle of basketArticles">
+            <td>
+              <h6 style="color: rgb(158, 131, 144)">
+                Provider: {{ basketArticle.article.user.firstName }}
+                {{ basketArticle.article.user.lastName }}
+              </h6>
+
+              <h4>
+                {{ basketArticle.article.name }}
+              </h4>
+              <button (click)="deleteBasketArticle(basketArticle.id)">
+                <strong>Delete <img [src]="delete" /></strong>
+              </button>
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                id="amount"
+                required
+                [(ngModel)]="basketArticle.amount"
+                name="amount"
+              />
+              <button
+                (click)="
+                  updateBasketArticle(basketArticle.id, basketArticle.amount)
+                "
+              >
+                <br />
+                <img [src]="update" />
+              </button>
+            </td>
+            <td>{{ basketArticle.article.price }} DT</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button (click)="deleteBasket()" class="btn btn-danger">
+      Delete Basket
+    </button>
+    <button (click)="goHome()" class="btn btn-danger">Continue Shopping</button>
+    <button (click)="goOrder()" class="btn btn-danger">
+      Finalize Your Order
+    </button>
+  </div>
+</div>

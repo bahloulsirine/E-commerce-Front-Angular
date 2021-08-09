@@ -10,6 +10,7 @@
       <thead>
         <tr>
           <th>Code</th>
+          <th>Name</th>
           <th>Stock</th>
           <th>Description</th>
           <th>Color</th>
@@ -24,6 +25,7 @@
       <tbody>
         <tr *ngFor="let article of articles">
           <td>{{ article.code }}</td>
+          <td>{{ article.name }}</td>
           <td>{{ article.stock }}</td>
           <td>{{ article.description }}</td>
           <td>{{ article.color }}</td>

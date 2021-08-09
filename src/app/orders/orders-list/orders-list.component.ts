@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from 'src/app/shared/service/order.service';
-import { Order } from 'src/models/order.mode';
+import { Order } from 'src/models/order.model';
 
 @Component({
   selector: 'app-orders-list',

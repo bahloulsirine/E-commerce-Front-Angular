@@ -48,4 +48,10 @@ export class UserService {
   getProviders() {
     return this.http.get(environment.URL + 'user/getProviders');
   }
+  verifyPassword(password: String) {
+    return this.http.get(environment.URL + 'user/verifyPassword/' + password);
+  }
+  updatePassword(password: String) {
+    return this.http.get(environment.URL + 'user/updatePassword/' + password);
+  }
 }

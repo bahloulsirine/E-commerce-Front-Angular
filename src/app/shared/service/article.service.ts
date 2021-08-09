@@ -27,9 +27,6 @@ export class ArticleService {
   getArticlesByColor(color: string) {
     return this.http.get(environment.URL + 'article/color/' + color);
   }
-  getInsufficientStockArticles(stock: number) {
-    return this.http.get(environment.URL + 'article/insufficient/' + stock);
-  }
   deleteArticle(id: number) {
     return this.http.delete(environment.URL + 'article/' + id);
   }
@@ -66,6 +63,14 @@ export class ArticleService {
   getInsufficientUsers(stock: number) {
     return this.http.get(
       environment.URL + 'article/userInsufficientStock/' + stock
+    );
+  }
+  getArticlesByProvider(id: number) {
+    return this.http.get(environment.URL + 'article/articleByUser/' + id);
+  }
+  getInsufficientArticlesByProvider(id: number, stock: number) {
+    return this.http.get(
+      environment.URL + 'article/insufficientByUser/' + stock + '/' + id
     );
   }
 }

@@ -44,3 +44,7 @@
 
   text-align: left;
 }
+button {
+  background-color: transparent;
+  border: transparent;
+}

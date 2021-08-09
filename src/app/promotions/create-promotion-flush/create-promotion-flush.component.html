@@ -24,7 +24,7 @@
         >Promotion Flush Expiration<span style="color: red">*</span></label
       >
       <input
-        type="text"
+        type="date"
         class="form-control"
         id="exp"
         required
@@ -42,7 +42,7 @@
         [multiple]="true"
       >
         <option *ngFor="let article of articles" [value]="article.id">
-          {{ article.code }}
+          {{ article.code }} {{ article.name }}
         </option>
       </select>
     </div>

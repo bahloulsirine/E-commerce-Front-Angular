@@ -40,7 +40,7 @@
     </div>
     <button type="submit" class="btn btn-success">Login</button>
     <div class="form-group">
-      <a routerLink="createUser" routerLinkActive=""> Don't Have An Account </a>
+      <a [routerLink]="['/', 'auth', 'signup']"> Don't Have An Account </a>
     </div>
   </form>
 </div>

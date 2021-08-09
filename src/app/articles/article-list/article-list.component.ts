@@ -42,4 +42,7 @@ export class ArticleListComponent implements OnInit {
   stock() {
     this.router.navigate(['insufficientStock']);
   }
+  provider() {
+    this.router.navigate(['articleProvider']);
+  }
 }

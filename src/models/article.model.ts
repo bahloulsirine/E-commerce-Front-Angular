@@ -12,6 +12,8 @@ export interface Article {
   subCategory: SubCategory;
   user: User;
   tva: number;
+  name: String;
+  url: String;
 }
 export interface ArticleCreate {
   id?: number;
@@ -24,6 +26,8 @@ export interface ArticleCreate {
   subCategoryId: number;
   userId: number;
   tva: number;
+  name: String;
+  url: String;
 }
 export interface UpdateArticle {
   code: number;
@@ -35,6 +39,8 @@ export interface UpdateArticle {
   subCategory: SubCategory;
   user: User;
   tva: number;
+  name: String;
+  url: String;
 }
 export interface RecommendationArticle {
   articleId: number;

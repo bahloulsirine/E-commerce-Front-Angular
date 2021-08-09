@@ -1,4 +1,4 @@
-import { orderDetails, Order } from '../../../models/order.mode';
+import { orderDetails, Order } from '../../../models/order.model';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../../shared/service/order.service';
 import { Component, OnInit } from '@angular/core';
