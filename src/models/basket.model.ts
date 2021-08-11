@@ -84,3 +84,6 @@ export interface BasketArticleUpdate {
   amount: number;
   basketArticleId: number;
 }
+export interface subcategoryOfCategory {
+  subcategories: SubCategory[];
+}

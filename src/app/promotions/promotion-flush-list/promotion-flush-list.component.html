@@ -1,7 +1,11 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>Promotions Flush List</h2>
-    <button (click)="deletePromotionFlush()" class="btn btn-danger">
+    <button
+      (click)="deletePromotionFlush()"
+      class="btn btn-danger"
+      *ngIf="authService.hasRole('ADMIN')"
+    >
       Delete Promotions Flush
     </button>
   </div>
@@ -28,6 +32,7 @@
             <button
               (click)="deletePromotionById(promotion.id)"
               class="btn btn-danger"
+              *ngIf="authService.hasRole('ADMIN')"
             >
               Delete This Promotion Flush
             </button>

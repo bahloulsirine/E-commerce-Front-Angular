@@ -14,7 +14,7 @@
         <h2>Promotions List</h2></a
       >
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="authService.hasRole('ADMIN')">
         <label for="name">Percentage</label>
         <input
           type="text"
@@ -41,12 +41,22 @@
           <tr *ngFor="let promotion of promotions">
             <td>{{ promotion.percentagePromotion }}</td>
             <td>
-              <button
-                (click)="deletePromotion(promotion.id)"
-                class="btn btn-danger"
-              >
-                Delete Promotion
-              </button>
+              <div *ngIf="authService.hasRole('ADMIN')">
+                <button
+                  (click)="deletePromotion(promotion.id)"
+                  class="btn btn-danger"
+                >
+                  Delete Promotion
+                </button>
+              </div>
+              <div *ngIf="authService.hasRole('PROVIDER')">
+                <button
+                  (click)="details(promotion.percentagePromotion)"
+                  class="btn btn-danger"
+                >
+                  Details
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>

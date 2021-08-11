@@ -16,13 +16,13 @@ export class ArticleService {
   getArticles() {
     return this.http.get(environment.URL + 'article');
   }
-  getArticlesBySubcategory(subcategory: string) {
+  getArticlesBySubcategory(subcategory: String) {
     return this.http.get(
       environment.URL + 'article/subCategoryName/' + subcategory
     );
   }
-  getArticlesByCategory(category: string) {
-    return this.http.get(environment.URL + 'article/CategoryName/' + category);
+  getArticlesByCategory(categoryId: number) {
+    return this.http.get(environment.URL + 'article/categoryId/' + categoryId);
   }
   getArticlesByColor(color: string) {
     return this.http.get(environment.URL + 'article/color/' + color);
@@ -72,5 +72,8 @@ export class ArticleService {
     return this.http.get(
       environment.URL + 'article/insufficientByUser/' + stock + '/' + id
     );
+  }
+  getArticlesByName(name: String) {
+    return this.http.get(environment.URL + 'article/name/' + name);
   }
 }

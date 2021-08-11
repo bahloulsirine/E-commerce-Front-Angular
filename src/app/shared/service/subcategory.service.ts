@@ -26,6 +26,9 @@ export class SubcategoryService {
   createSubcategory(subcategory: CreateSubcategory) {
     return this.http.post(environment.URL + 'subcategory', subcategory);
   }
+  getSubcategoriesByCategoryId(id: number) {
+    return this.http.get(environment.URL + 'subcategory/categoryId/' + id);
+  }
 
   //  groupBy(list:any, keyGetter:any) {
   //   const map = new Map();

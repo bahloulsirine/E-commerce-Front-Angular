@@ -33,6 +33,11 @@
 
               <h4>
                 {{ basketArticle.article.name }}
+                <img
+                  class="card-img-top"
+                  src="{{ basketArticle.article.url }}"
+                  alt="Card image cap"
+                />
               </h4>
               <button (click)="deleteBasketArticle(basketArticle.id)">
                 <strong>Delete <img [src]="delete" /></strong>

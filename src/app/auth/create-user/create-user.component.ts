@@ -1,3 +1,4 @@
+import { BasketService } from './../../shared/service/basket.service';
 import { Router } from '@angular/router';
 import { JwtResponse } from '../../../models/jwt.model';
 import { SignUpRequest, UserAuth } from '../../../models/user';
@@ -18,7 +19,8 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private basketService: BasketService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +34,6 @@ export class CreateUserComponent implements OnInit {
       this.userAuth.password = this.user.password;
       this.userAuth.userName = this.user.email;
       console.log(this.userAuth);
-
       this.loginUser();
     });
   }
@@ -62,7 +63,7 @@ export class CreateUserComponent implements OnInit {
         this.token = data;
         this.authService.setToken(this.token.jwt);
         this.authService.setProfile(this.token.user);
-        this.router.navigate(['/']);
+        this.createBasket();
       },
       (error) => {
         console.log('something went wrong');
@@ -71,5 +72,12 @@ export class CreateUserComponent implements OnInit {
   }
   restAuth() {
     this.userAuth = { userName: '', password: '' };
+  }
+  createBasket() {
+    this.basketService.createNewBasket().subscribe((data) => {
+      console.log('basket created');
+      console.log(data);
+      this.router.navigate(['/']);
+    });
   }
 }

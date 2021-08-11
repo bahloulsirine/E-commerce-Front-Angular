@@ -1,5 +1,5 @@
 <h3>Update Article</h3>
-<div *ngIf="!submitted" style="width: 400px">
+<div *ngIf="!submitted && !error" style="width: 400px">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Code</label>
@@ -113,5 +113,9 @@
 </div>
 <div *ngIf="submitted">
   <h4>You update your account successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+<div *ngIf="error">
+  <h4>THIS ARTICLE IS NOT YOURS!!!! -_-</h4>
   <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
 </div>

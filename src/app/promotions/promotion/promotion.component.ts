@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { Router } from '@angular/router';
 import { PromotionService } from '../../shared/service/promotion.service';
 import { Promotion } from '../../../models/promotion';
@@ -13,7 +14,8 @@ export class PromotionComponent implements OnInit {
   percentage: number;
   constructor(
     private promotionService: PromotionService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -21,10 +23,21 @@ export class PromotionComponent implements OnInit {
   }
 
   reloadData() {
-    this.promotionService.getPromotionsList().subscribe((data: Promotion[]) => {
-      this.promotions = data;
-      console.log(data);
-    });
+    if (this.authService.hasRole('ADMIN')) {
+      this.promotionService
+        .getPromotionsList()
+        .subscribe((data: Promotion[]) => {
+          this.promotions = data;
+          console.log(data);
+        });
+    } else {
+      this.promotionService
+        .getPromotionProvider()
+        .subscribe((data: Promotion[]) => {
+          this.promotions = data;
+          console.log(data);
+        });
+    }
   }
 
   deletePromotion(id: number) {
@@ -40,5 +53,8 @@ export class PromotionComponent implements OnInit {
   }
   getPromotionPercentage() {
     this.router.navigate(['promotionPercentage', this.percentage]);
+  }
+  details(percentage: number) {
+    this.router.navigate(['promotionPercentage', percentage]);
   }
 }

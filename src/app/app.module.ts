@@ -1,3 +1,4 @@
+import { ErrorInterceptorService } from './shared/service/error-interceptor.service';
 import { LogoutGuard } from './guard/logout.guard';
 import { SecurityGuard } from './guard/security.guard';
 import { HeaderComponent } from './header/header.component';
@@ -17,14 +18,22 @@ import { MatSliderModule } from '@angular/material/slider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptorService } from './shared/service/token-interceptor.service';
-import { ProviderArticleComponent } from './articles/provider-article/provider-article.component';
-import { ProviderArticleListComponent } from './articles/provider-article-list/provider-article-list.component';
-import { InsuffArticlesByProviderComponent } from './articles/insuff-articles-by-provider/insuff-articles-by-provider.component';
-import { BasketComponent } from './baskets/basket/basket.component';
-import { BodyComponent } from './body/body.component';
+import { SubBodyComponent } from './body/sub-body/sub-body.component';
+import { CatBodyComponent } from './body/cat-body/cat-body.component';
+import { PromotionArticlesComponent } from './articles/promotion-articles/promotion-articles.component';
+import { ArticlesByNameComponent } from './articles/articles-by-name/articles-by-name.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, ShopComponent, HeaderComponent, ProviderArticleComponent, ProviderArticleListComponent, InsuffArticlesByProviderComponent, BasketComponent, BodyComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    ShopComponent,
+    HeaderComponent,
+    SubBodyComponent,
+    CatBodyComponent,
+    PromotionArticlesComponent,
+    ArticlesByNameComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,6 +53,11 @@ import { BodyComponent } from './body/body.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true,
     },
   ],

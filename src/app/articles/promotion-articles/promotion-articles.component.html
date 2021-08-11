@@ -1,0 +1,119 @@
+<div *ngFor="let promotion of promotions">
+  <div class="row">
+    <div
+      class="col-md-3"
+      *ngFor="let article of promotion.articles"
+      style="margin: 5px"
+    >
+      <div class="card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="{{ article.url }}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h3 style="color: blueviolet">
+            {{ promotion.percentagePromotion }}%
+          </h3>
+          <del>{{ article.price }} DT </del>
+          <strong
+            >{{
+              newPrice(promotion.percentagePromotion, article.price)
+            }}
+            DT</strong
+          >
+          <p class="card-text">
+            <strong>{{ article.name }}</strong
+            ><br />
+
+            {{ article.description }} <br />
+          </p>
+
+          <div>
+            <div class="input-group">
+              <input
+                style="width: 50px"
+                type="text"
+                class="form-control"
+                id="code"
+                required
+                [(ngModel)]="amount"
+                name="code"
+              />
+              <button (click)="addAmount()"><strong>+</strong></button>
+              <button (click)="subAmount()"><strong>-</strong></button>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success"
+              (click)="addBasket(article.id)"
+            >
+              Add To Basket
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngFor="let promotion of promotionFlush">
+  <div class="row">
+    <div
+      class="col-md-3"
+      *ngFor="let article of promotion.articles"
+      style="margin: 5px"
+    >
+      <div class="card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="{{ article.url }}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h3 style="color: blueviolet">
+            {{ promotion.percentagePromotion }}%
+          </h3>
+          <h4 style="color: rgb(235, 16, 118)">
+            {{ promotion.promotionExpiration }}
+          </h4>
+          <del>{{ article.price }} DT </del>
+          <strong
+            >{{
+              newPrice(promotion.percentagePromotion, article.price)
+            }}
+            DT</strong
+          >
+          <p class="card-text">
+            <strong>{{ article.name }}</strong
+            ><br />
+
+            {{ article.description }} <br />
+          </p>
+
+          <div>
+            <div class="input-group">
+              <input
+                style="width: 50px"
+                type="text"
+                class="form-control"
+                id="code"
+                required
+                [(ngModel)]="amount"
+                name="code"
+              />
+              <button (click)="addAmount()"><strong>+</strong></button>
+              <button (click)="subAmount()"><strong>-</strong></button>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success"
+              (click)="addBasket(article.id)"
+            >
+              Add To Basket
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

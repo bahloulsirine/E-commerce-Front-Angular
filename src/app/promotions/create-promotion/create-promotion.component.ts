@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from 'src/app/shared/service/article.service';
 import { PromotionService } from 'src/app/shared/service/promotion.service';
@@ -13,10 +14,12 @@ export class CreatePromotionComponent implements OnInit {
   submitted = false;
   promotion: CreatePromotion;
   articles: Article[];
+  articlesProvider: Article[];
 
   constructor(
     private promotionService: PromotionService,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -33,9 +36,11 @@ export class CreatePromotionComponent implements OnInit {
     this.save();
   }
   getArticles() {
-    this.articleService.getArticles().subscribe((data: Article[]) => {
-      this.articles = data;
-    });
+    this.promotionService
+      .getNoPromotionArticles()
+      .subscribe((data: Article[]) => {
+        this.articles = data;
+      });
   }
 
   resetPromotion() {

@@ -3,11 +3,6 @@
 <nav class="navbar navbar-expand-sm">
   <!-- Links -->
   <ul class="navbar-nav">
-    <!-- <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
-      <a routerLink="userList" class="nav-link" routerLinkActive="active"
-        ><strong> <h4>User List</h4></strong></a
-      >
-    </li> -->
     <li class="nav-item-img">
       <a>
         <img
@@ -19,6 +14,30 @@
         />
       </a>
     </li>
+    <li class="nav-item-img" *ngFor="let category of categories">
+      <a
+        routerLink="categoryArticles/{{ category.id }}"
+        class="nav-link"
+        routerLinkActive="active"
+      >
+        <strong>
+          <h4>{{ category.name }}</h4></strong
+        >
+      </a>
+      <div class="sub-menu" style="z-index: 1">
+        <ul>
+          <li class="nav-item" *ngFor="let subcategory of category.subcategory">
+            <a
+              routerLink="subcategoryArticles/{{ subcategory.name }}"
+              class="nav-link"
+              routerLinkActive="active"
+              ><strong>{{ subcategory.name }}</strong>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
     <li class="nav-item-img">
       <a>
         <img
@@ -30,17 +49,12 @@
         />
       </a>
     </li>
+
     <li class="nav-item-img">
       <a>
-        <img
-          [src]="menu"
-          fxLayoutAlign="center center"
-          routerLink="promotionFlushList"
-          class="nav-link"
-          routerLinkActive="active"
-        />
+        <img [src]="menu" fxLayoutAlign="center center" class="nav-link" />
       </a>
-      <div class="sub-menu">
+      <div class="sub-menu" style="z-index: 1">
         <ul>
           <li class="nav-item">
             <a routerLink="update" class="nav-link" routerLinkActive="active"
@@ -48,8 +62,24 @@
             </a>
           </li>
           <li class="nav-item">
+            <a
+              routerLink="updatePassword"
+              class="nav-link"
+              routerLinkActive="active"
+              >Update Password
+            </a>
+          </li>
+          <li class="nav-item">
             <a routerLink="myOrders" class="nav-link" routerLinkActive="active"
               >My Orders
+            </a>
+          </li>
+          <li *ngIf="authService.hasRole('PROVIDER')" class="nav-item">
+            <a
+              routerLink="articleProviderList/{{ id }}"
+              class="nav-link"
+              routerLinkActive="active"
+              >My Articles
             </a>
           </li>
           <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
@@ -99,7 +129,12 @@
               >Orders List
             </a>
           </li>
-          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+          <li
+            *ngIf="
+              authService.hasRole('ADMIN') || authService.hasRole('PROVIDER')
+            "
+            class="nav-item"
+          >
             <a
               routerLink="createPromotion"
               class="nav-link"
@@ -107,7 +142,12 @@
               >Create Promotion
             </a>
           </li>
-          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+          <li
+            *ngIf="
+              authService.hasRole('ADMIN') || authService.hasRole('PROVIDER')
+            "
+            class="nav-item"
+          >
             <a
               routerLink="promotionList"
               class="nav-link"
@@ -115,7 +155,12 @@
               >Promotions List
             </a>
           </li>
-          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+          <li
+            *ngIf="
+              authService.hasRole('ADMIN') || authService.hasRole('PROVIDER')
+            "
+            class="nav-item"
+          >
             <a
               routerLink="createPromotionFlush"
               class="nav-link"
@@ -123,7 +168,12 @@
               >Create Promotion Flush
             </a>
           </li>
-          <li *ngIf="authService.hasRole('ADMIN')" class="nav-item">
+          <li
+            *ngIf="
+              authService.hasRole('ADMIN') || authService.hasRole('PROVIDER')
+            "
+            class="nav-item"
+          >
             <a
               routerLink="promotionFlushList"
               class="nav-link"
@@ -131,82 +181,15 @@
               >Promotions Flush List
             </a>
           </li>
-          <li *ngIf="authService.hasRole('PROVIDER')" class="nav-item">
-            <a
-              routerLink="articleProviderList/{{ id }}"
-              class="nav-link"
-              routerLinkActive="active"
-              >My Articles
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              routerLink="updatePassword"
-              class="nav-link"
-              routerLinkActive="active"
-              >Update Password
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              routerLink="auth/login"
-              class="nav-link"
-              routerLinkActive="active"
-              ><button (click)="logOut()">
-                Logout<img [src]="logout" fxLayoutAlign="center center" />
-              </button>
-            </a>
-          </li>
         </ul>
       </div>
     </li>
+    <li class="nav-item">
+      <a routerLink="auth/login" class="nav-link" routerLinkActive="active"
+        ><button (click)="logOut()">
+          <img [src]="logout" fxLayoutAlign="center center" />
+        </button>
+      </a>
+    </li>
   </ul>
 </nav>
-<!-- <div class="row">
-  <div class="col-sm-3">
-    <div class="card" style="width: 18rem">
-      <img
-        class="card-img-top"
-        src="https://images.unsplash.com/photo-1491604612772-6853927639ef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
-        alt="Card image cap"
-      />
-      <div class="card-body">
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card" style="width: 18rem">
-      <img
-        class="card-img-top"
-        src="https://images.unsplash.com/photo-1491604612772-6853927639ef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
-        alt="Card image cap"
-      />
-      <div class="card-body">
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card" style="width: 18rem">
-      <img
-        class="card-img-top"
-        src="https://images.unsplash.com/photo-1491604612772-6853927639ef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
-        alt="Card image cap"
-      />
-      <div class="card-body">
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
-    </div>
-  </div>
-</div> -->

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
   title = ' "TIKTAK Shop"';
-  image = 'assets/my img/clickShop.png';
-  constructor() {}
+  name: String;
+  image = 'assets/myImg/clickShop.png';
+  search = 'assets/myImg/search.png';
 
-  ngOnInit(): void {}
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.name = '';
+  }
+  getArticles() {
+    this.router.navigate(['articleByName/', this.name]);
+    this.name = '';
+  }
 }

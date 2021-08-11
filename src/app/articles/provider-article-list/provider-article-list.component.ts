@@ -20,8 +20,6 @@ export class ProviderArticleListComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
-
     this.reloadData();
   }
   reloadData() {
@@ -33,5 +31,8 @@ export class ProviderArticleListComponent implements OnInit {
   }
   getInsufficientArticles() {
     this.router.navigate(['insufficientArticlesProvider', this.stock, this.id]);
+  }
+  updateArticle(id: number) {
+    this.router.navigate(['updateArticle', id]);
   }
 }

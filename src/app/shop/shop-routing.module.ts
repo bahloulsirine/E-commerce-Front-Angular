@@ -1,4 +1,8 @@
-import { BodyComponent } from './../body/body.component';
+import { ArticlesByNameComponent } from './../articles/articles-by-name/articles-by-name.component';
+import { PromotionArticlesComponent } from './../articles/promotion-articles/promotion-articles.component';
+import { CatBodyComponent } from './../body/cat-body/cat-body.component';
+import { SubBodyComponent } from './../body/sub-body/sub-body.component';
+import { BodyComponent } from '../body/bodyShop/body.component';
 import { CreateOrderComponent } from './../orders/create-order/create-order.component';
 import { BasketComponent } from './../baskets/basket/basket.component';
 import { UpdatePasswordComponent } from './../users/update-password/update-password.component';
@@ -96,6 +100,13 @@ const routes: Routes = [
   { path: 'updatePassword', component: UpdatePasswordComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'createOrder', component: CreateOrderComponent },
+  { path: 'subcategoryArticles/:name', component: SubBodyComponent },
+  { path: 'categoryArticles/:id', component: CatBodyComponent },
+  { path: 'promotionArticles', component: PromotionArticlesComponent },
+  {
+    path: 'articleByName/:name',
+    component: ArticlesByNameComponent,
+  },
 ];
 
 @NgModule({

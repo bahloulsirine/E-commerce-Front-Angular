@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { Promotion, PromotionFlush } from '../../../models/promotion';
 import { Router } from '@angular/router';
 import { PromotionService } from '../../shared/service/promotion.service';
@@ -12,7 +13,8 @@ export class PromotionFlushListComponent implements OnInit {
   promotions: PromotionFlush[];
   constructor(
     private promotionService: PromotionService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -20,12 +22,21 @@ export class PromotionFlushListComponent implements OnInit {
   }
 
   reloadData() {
-    this.promotionService
-      .getPromotionFlush()
-      .subscribe((data: PromotionFlush[]) => {
-        this.promotions = data;
-        console.log(data);
-      });
+    if (this.authService.hasRole('ADMIN')) {
+      this.promotionService
+        .getPromotionFlush()
+        .subscribe((data: PromotionFlush[]) => {
+          this.promotions = data;
+          console.log(data);
+        });
+    } else {
+      this.promotionService
+        .getPromotionFlushProvider()
+        .subscribe((data: PromotionFlush[]) => {
+          this.promotions = data;
+          console.log(data);
+        });
+    }
   }
 
   deletePromotionById(id: number) {

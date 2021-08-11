@@ -1,0 +1,9 @@
+button {
+  background-color: transparent;
+  color: rgb(211, 27, 171);
+  border-color: rgb(185, 81, 130);
+}
+button:hover {
+  background-color: rgb(213, 127, 224);
+  color: blueviolet;
+}

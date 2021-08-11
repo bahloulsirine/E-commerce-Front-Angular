@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { PromotionFlush } from '../../../models/promotion';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PromotionService } from '../../shared/service/promotion.service';
@@ -17,7 +18,8 @@ export class PromotionFlushPercentageComponent implements OnInit {
   constructor(
     private promotionService: PromotionService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -31,9 +33,17 @@ export class PromotionFlushPercentageComponent implements OnInit {
       .getPromotionFlushById(this.id)
       .subscribe((data: PromotionFlush) => {
         this.promotionFlush = data;
-        this.articles = this.promotionFlush.articles;
-        console.log(this.articles);
       });
+
+    if (this.authService.hasRole('ADMIN')) {
+      this.articles = this.promotionFlush.articles;
+    } else {
+      this.promotionService
+        .getPromotionFlushArticlesProvider(this.id)
+        .subscribe((data: Article[]) => {
+          this.articles = data;
+        });
+    }
   }
   deletePromotionArticle(id: number) {
     this.promotionService.deletePromotionFlushArticle(this.id, id).subscribe(

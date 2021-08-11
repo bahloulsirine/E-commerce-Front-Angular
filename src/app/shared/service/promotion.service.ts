@@ -50,7 +50,19 @@ export class PromotionService {
       promotion.articleIds
     );
   }
+  getPromotionProvider() {
+    return this.http.get(environment.URL + 'promotion/promotionProvider');
+  }
+  getPromotionArticlesProvider(percentage: number) {
+    return this.http.get(
+      environment.URL + 'promotion/promotionProviderArticles/' + percentage
+    );
+  }
+  getNoPromotionArticles() {
+    return this.http.get(environment.URL + 'promotion/noPromotionArticles');
+  }
 
+  //****************Promotion Flush*****************
   createPromotionFlush(promotion: CreatePromotionFlush) {
     return this.http.post(
       environment.URL +
@@ -90,5 +102,20 @@ export class PromotionService {
   }
   getPromotionFlushById(id: number) {
     return this.http.get(environment.URL + 'promotionFlush/' + id);
+  }
+  getPromotionFlushProvider() {
+    return this.http.get(environment.URL + 'promotionFlush/promotionProvider');
+  }
+  getPromotionFlushArticlesProvider(promotionId: number) {
+    return this.http.get(
+      environment.URL +
+        'promotionFlush/promotionProviderArticles/' +
+        promotionId
+    );
+  }
+  getNoPromotionFlushArticles() {
+    return this.http.get(
+      environment.URL + 'promotionFlush/noPromotionArticles'
+    );
   }
 }

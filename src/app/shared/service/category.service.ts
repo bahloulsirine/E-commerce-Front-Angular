@@ -17,4 +17,7 @@ export class CategoryService {
   createCategory(category: CategoryCreate) {
     return this.http.post(environment.URL + 'category', category);
   }
+  getCategoryById(id: number) {
+    return this.http.get(environment.URL + 'category/' + id);
+  }
 }

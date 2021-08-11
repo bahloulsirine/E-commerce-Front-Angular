@@ -7,29 +7,32 @@ import {
   BasketArticle,
   BasketArticleUpdate,
 } from './../../../models/basket.model';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css'],
 })
-export class BasketComponent implements OnInit {
+export class BasketComponent implements OnInit, AfterViewInit {
   basket: Basket;
   basketArticles: BasketArticle[];
   basketId: number;
   priceSum: number = null;
-  delete: string = 'assets/my img/delete.png';
-  update: string = 'assets/my img/update.png';
+  delete: string = 'assets/myImg/delete.png';
+  update: string = 'assets/myImg/update.png';
   basketArticleUpdate: BasketArticleUpdate;
 
-  constructor(
-    private basketService: BasketService,
-    private userService: UserService,
-    private router: Router
-  ) {}
+  constructor(private basketService: BasketService, private router: Router) {}
+  ngAfterViewInit(): void {
+    console.log('after');
+
+    this.getBasket();
+  }
 
   ngOnInit(): void {
+    console.log('init');
+
     this.resetBasKetArticleUpdate();
     this.basketId = 0;
     this.getBasket();

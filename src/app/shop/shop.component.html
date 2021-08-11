@@ -2,6 +2,22 @@
   <div class="form form-group">
     <form>
       <img [src]="image" fxLayoutAlign="center center" />
+      <div class="input-group">
+        <div class="form-outline">
+          <input
+            type="search"
+            id="form1"
+            class="form-control"
+            required
+            [(ngModel)]="name"
+            name="url"
+            placeholder="Search"
+          />
+        </div>
+        <button (click)="getArticles()">
+          <img [src]="search" fxLayoutAlign="center center" />
+        </button>
+      </div>
     </form>
   </div>
 </body>

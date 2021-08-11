@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   create = false;
   userAuth: UserAuth;
   token: JwtResponse;
-  createBasket: CreateBasket;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -35,12 +34,6 @@ export class LoginComponent implements OnInit {
         this.token = data;
         this.authService.setToken(this.token.jwt);
         this.authService.setProfile(this.token.user);
-        this.basketService
-          .createNewBasket(this.createBasket)
-          .subscribe((data) => {
-            console.log('created');
-            console.log(data);
-          });
         this.router.navigate(['/']);
       },
       (error) => {
@@ -53,8 +46,5 @@ export class LoginComponent implements OnInit {
   }
   restAuth() {
     this.userAuth = { userName: '', password: '' };
-  }
-  resetBasket() {
-    this.createBasket = { orderItems: [] };
   }
 }

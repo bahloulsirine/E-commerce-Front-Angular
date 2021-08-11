@@ -31,6 +31,7 @@
           <th>TVA</th>
           <th>Subcategory Name</th>
           <th>Provider Cin</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -45,6 +46,11 @@
           <td>{{ article.tva }}</td>
           <td>{{ article.subCategory.name }}</td>
           <td>{{ article.user.cin }}</td>
+          <td>
+            <button (click)="updateArticle(article.id)" class="btn btn-danger">
+              Update
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

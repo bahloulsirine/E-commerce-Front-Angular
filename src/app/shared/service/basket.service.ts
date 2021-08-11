@@ -1,3 +1,4 @@
+import { Article } from './../../../models/order.model';
 import {
   CreateBasket,
   BasketArticleUpdate,
@@ -11,8 +12,8 @@ import { environment } from 'src/environments/environment';
 })
 export class BasketService {
   constructor(private http: HttpClient) {}
-  createNewBasket(createBasket: CreateBasket) {
-    return this.http.post(environment.URL + 'basket', createBasket);
+  createNewBasket() {
+    return this.http.post(environment.URL + 'basket/createBasket', {});
   }
   getBasket() {
     return this.http.get(environment.URL + 'basket/BasketByUser');
@@ -33,5 +34,11 @@ export class BasketService {
   }
   deleteBasket() {
     return this.http.delete(environment.URL + 'basket');
+  }
+  createBasketArticle(amount: number, articleId: number) {
+    return this.http.post(
+      environment.URL + 'basketArticle/' + amount + '/' + articleId,
+      {}
+    );
   }
 }

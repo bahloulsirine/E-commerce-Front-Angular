@@ -14,6 +14,7 @@ export class UpdateArticleComponent implements OnInit {
   submitted = false;
   subcategoryName: String;
   userCin: number;
+  error = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -37,8 +38,13 @@ export class UpdateArticleComponent implements OnInit {
   updateArticle() {
     this.articleService.updateArticle(this.article).subscribe(
       (data: Article) => {
-        console.log(data);
-        this.resetArticle();
+        if (data == null) {
+          this.error = true;
+        } else {
+          this.submitted = true;
+          console.log('dataaaaa', data);
+          this.resetArticle();
+        }
       },
       (error) => {
         console.log('something went wrong');
@@ -47,7 +53,6 @@ export class UpdateArticleComponent implements OnInit {
   }
   onSubmit() {
     this.updateArticle();
-    this.submitted = true;
   }
 
   resetArticle() {

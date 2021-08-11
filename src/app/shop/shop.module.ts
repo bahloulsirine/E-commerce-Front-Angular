@@ -1,3 +1,8 @@
+import { InsuffArticlesByProviderComponent } from './../articles/insuff-articles-by-provider/insuff-articles-by-provider.component';
+import { ProviderArticleListComponent } from './../articles/provider-article-list/provider-article-list.component';
+import { ProviderArticleComponent } from './../articles/provider-article/provider-article.component';
+import { BasketComponent } from './../baskets/basket/basket.component';
+import { BodyComponent } from '../body/bodyShop/body.component';
 import { CreateOrderComponent } from './../orders/create-order/create-order.component';
 import { PromotionFlushPercentageComponent } from './../promotions/promotion-flush-percentage/promotion-flush-percentage.component';
 import { AddPromotionFlushComponent } from './../promotions/add-promotion-flush/add-promotion-flush.component';
@@ -15,7 +20,7 @@ import { InsufficientStockUsersComponent } from './../articles/insufficient-stoc
 import { InsufficientStockArticlesComponent } from './../articles/insufficient-stock-articles/insufficient-stock-articles.component';
 import { ListSubcategoriesComponent } from './../categories/list-subcategories/list-subcategories.component';
 import { CreateSubcategoryComponent } from './../categories/create-subcategory/create-subcategory.component';
-import { AddRecommendationsComponent } from './../articles/add-recommendations/add-recommendations.component';
+import { AddRecommendationsComponent } from '../articles/add-recommendations/add-recommendations.component';
 import { ArticleRecommendationComponent } from './../articles/article-recommendation/article-recommendation.component';
 import { WonUsersListComponent } from './../users/won-users-list/won-users-list.component';
 import { UpdateArticleComponent } from './../articles/update-article/update-article.component';
@@ -36,6 +41,10 @@ import { UpdatePasswordComponent } from '../users/update-password/update-passwor
 
 @NgModule({
   declarations: [
+    InsuffArticlesByProviderComponent,
+    BasketComponent,
+    ProviderArticleComponent,
+    ProviderArticleListComponent,
     UpdateUserComponent,
     UserListComponent,
     UpdateArticleComponent,
@@ -67,6 +76,7 @@ import { UpdatePasswordComponent } from '../users/update-password/update-passwor
     UpdatePasswordComponent,
     PromotionFlushPercentageComponent,
     CreateOrderComponent,
+    BodyComponent,
   ],
   imports: [CommonModule, ShopRoutingModule, FormsModule, HttpClientModule],
 })

@@ -53,9 +53,11 @@ export class AddPromotionFlushComponent implements OnInit {
     this.save();
   }
   getArticles() {
-    this.articleService.getArticles().subscribe((data: Article[]) => {
-      this.articles = data;
-    });
+    this.promotionService
+      .getNoPromotionFlushArticles()
+      .subscribe((data: Article[]) => {
+        this.articles = data;
+      });
   }
 
   resetPromotionFlush() {

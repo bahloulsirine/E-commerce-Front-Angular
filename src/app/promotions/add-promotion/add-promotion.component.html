@@ -30,7 +30,11 @@
         [multiple]="true"
       >
         <option *ngFor="let article of articles" [value]="article.id">
-          {{ article.code }} {{ article.name }}
+          <strong> Code: </strong>
+          {{ article.code }}
+
+          Name:
+          {{ article.name }}
         </option>
       </select>
     </div>

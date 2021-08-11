@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '../../shared/service/article.service';
 import { PromotionService } from '../../shared/service/promotion.service';
@@ -20,7 +21,8 @@ export class AddPromotionComponent implements OnInit {
     private promotionService: PromotionService,
     private articleService: ArticleService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -40,9 +42,11 @@ export class AddPromotionComponent implements OnInit {
     this.save();
   }
   getArticles() {
-    this.articleService.getArticles().subscribe((data: Article[]) => {
-      this.articles = data;
-    });
+    this.promotionService
+      .getNoPromotionArticles()
+      .subscribe((data: Article[]) => {
+        this.articles = data;
+      });
   }
 
   resetPromotion() {

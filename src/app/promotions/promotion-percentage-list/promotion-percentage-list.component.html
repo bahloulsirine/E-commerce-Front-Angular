@@ -5,7 +5,12 @@
     <button (click)="addPromotion()" class="btn btn-danger">
       Add Promotions Articles
     </button>
-    <button (click)="deletePromotions()" class="btn btn-danger">
+
+    <button
+      (click)="deletePromotions()"
+      class="btn btn-danger"
+      *ngIf="authService.hasRole('ADMIN')"
+    >
       Delete all This Promotions
     </button>
   </div>

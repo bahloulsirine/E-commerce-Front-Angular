@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PromotionService } from 'src/app/shared/service/promotion.service';
@@ -15,7 +16,8 @@ export class PromotionPercentageListComponent implements OnInit {
   constructor(
     private promotionService: PromotionService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -23,11 +25,19 @@ export class PromotionPercentageListComponent implements OnInit {
     this.reloadData();
   }
   reloadData() {
-    this.promotionService
-      .getPromotionPercentage(this.percentage)
-      .subscribe((data: Article[]) => {
-        this.articles = data;
-      });
+    if (this.authService.hasRole('ADMIN')) {
+      this.promotionService
+        .getPromotionPercentage(this.percentage)
+        .subscribe((data: Article[]) => {
+          this.articles = data;
+        });
+    } else {
+      this.promotionService
+        .getPromotionArticlesProvider(this.percentage)
+        .subscribe((data: Article[]) => {
+          this.articles = data;
+        });
+    }
   }
   deletePromotionArticle(id: number) {
     this.promotionService.deletePromotionArticle(id, this.percentage).subscribe(

@@ -1,3 +1,5 @@
+import { CategoryService } from './../shared/service/category.service';
+import { subcategoryOfCategory } from './../../models/basket.model';
 import { SubcategoryService } from 'src/app/shared/service/subcategory.service';
 import { SubCategory } from 'src/models/subcategory.model';
 import { User } from 'src/models/user';
@@ -17,39 +19,59 @@ export class HeaderComponent implements OnInit {
     public authService: AuthService,
     private router: Router,
     private userService: UserService,
-    private subcategoryService: SubcategoryService
+    private subcategoryService: SubcategoryService,
+    private categoryService: CategoryService
   ) {}
-  basket: string = 'assets/my img/basket.png';
-  menu: string = 'assets/my img/menu.png';
-  home: string = 'assets/my img/home.png';
-  logout: string = 'assets/my img/logout.png';
+  subList: Array<subcategoryOfCategory>;
+
+  basket: string = 'assets/myImg/basket.png';
+  menu: string = 'assets/myImg/menu.png';
+  home: string = 'assets/myImg/home.png';
+  logout: string = 'assets/myImg/logout.png';
   id: number;
   user: User;
-  subcategories: SubCategory[];
-  categories: Array<Category> = [];
+  categories: any;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((data: User) => {
       this.user = data;
       this.id = this.user.id;
     });
-    this.getSubcategories();
+    this.getCategories();
+
+    // this.getSubcategories();
   }
-  getSubcategories() {
-    this.subcategoryService
-      .getSubcategories()
-      .subscribe((data: SubCategory[]) => {
-        this.subcategories = data;
-        console.log(this.subcategories);
-        for (var subcategory of this.subcategories) {
-          if (this.categories.includes(subcategory.category) == false) {
-            this.categories.push(subcategory.category);
-          }
-        }
-        console.log(this.categories);
-      });
-  }
+  // getSubcategories() {
+  //   this.subcategoryService
+  //     .getSubcategories()
+  //     .subscribe((data: SubCategory[]) => {
+  //       this.subcategories = data;
+  //       console.log(this.subcategories);
+  //       for (var subcategory of this.subcategories) {
+  //         if (this.categories.includes(subcategory.category) == false) {
+  //           this.categories.push(subcategory.category);
+  //         }
+  //       }
+  //       console.log(this.categories);
+  //     });
+  // }
   logOut() {
     this.authService.logout();
+  }
+  getCategories() {
+    this.categoryService.getAllCategories().subscribe((data) => {
+      this.categories = data;
+      this.categories.forEach((x) => {
+        this.filterByCategory(x.id);
+      });
+    });
+  }
+  filterByCategory(categoryId) {
+    this.subcategoryService
+      .getSubcategoriesByCategoryId(categoryId)
+      .subscribe((data) => {
+        this.categories[categoryId].subcategory = data;
+        console.log(this.categories);
+      });
   }
 }
