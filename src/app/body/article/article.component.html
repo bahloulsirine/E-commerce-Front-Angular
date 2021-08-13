@@ -1,0 +1,34 @@
+<div class="card" style="width: 18rem" *ngIf="article.stock > 0">
+  <img src="{{ article.url }}" [routerLink]="['/', 'articleDetails', id, 0]" />
+  <div class="card-body">
+    <p class="card-text">
+      <strong>{{ article.name }}</strong
+      ><br />
+      <strong> {{ article.price }}DT</strong><br />
+      {{ article.description }}
+    </p>
+
+    <div>
+      <div class="input-group">
+        <input
+          style="width: 50px"
+          type="text"
+          class="form-control"
+          id="code"
+          required
+          [(ngModel)]="amount"
+          name="code"
+        />
+        <button (click)="addAmount()"><strong>+</strong></button>
+        <button (click)="subAmount()"><strong>-</strong></button>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-success"
+        (click)="addBasket(article.id)"
+      >
+        Add To Basket
+      </button>
+    </div>
+  </div>
+</div>

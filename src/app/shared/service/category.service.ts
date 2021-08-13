@@ -20,4 +20,7 @@ export class CategoryService {
   getCategoryById(id: number) {
     return this.http.get(environment.URL + 'category/' + id);
   }
+  getCategoryRequest() {
+    return this.http.get(environment.URL + 'categoryRequest');
+  }
 }

@@ -1,3 +1,4 @@
+import { ArticleDetailsComponent } from './../articles/article-details/article-details.component';
 import { ArticlesByNameComponent } from './../articles/articles-by-name/articles-by-name.component';
 import { PromotionArticlesComponent } from './../articles/promotion-articles/promotion-articles.component';
 import { CatBodyComponent } from './../body/cat-body/cat-body.component';
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path: 'articleByName/:name',
     component: ArticlesByNameComponent,
+  },
+  {
+    path: 'articleDetails/:id/:percentage',
+    component: ArticleDetailsComponent,
   },
 ];
 

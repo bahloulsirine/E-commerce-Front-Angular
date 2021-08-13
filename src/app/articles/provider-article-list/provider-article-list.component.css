@@ -1,0 +1,35 @@
+input[type="text"] {
+  border: 0;
+  background: none;
+  display: block;
+  border: 2px solid #82939e;
+  padding: 10px 80px;
+  width: 300px;
+  outline: none;
+  color: rgb(10, 9, 9);
+  border-radius: 24px;
+  transition: 0.25s;
+}
+input[type="text"]:focus {
+  width: 280px;
+  border-color: rgb(160, 105, 130);
+}
+button[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+
+  text-align: center;
+  border: 2px solid transparent;
+  padding: 14px 40px;
+  outline: none;
+  color: rgb(235, 21, 92);
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  margin: 3px 1%;
+}
+button[type="submit"]:hover {
+  background: #a04de4;
+  border: #0a0e0b;
+}

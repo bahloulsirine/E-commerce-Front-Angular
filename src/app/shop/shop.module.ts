@@ -38,6 +38,12 @@ import { CommonModule } from '@angular/common';
 import { ShopRoutingModule } from './shop-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdatePasswordComponent } from '../users/update-password/update-password.component';
+import { ArticleComponent } from '../body/article/article.component';
+import { ArticlesByNameComponent } from '../articles/articles-by-name/articles-by-name.component';
+import { PromotionArticlesComponent } from '../articles/promotion-articles/promotion-articles.component';
+import { CatBodyComponent } from '../body/cat-body/cat-body.component';
+import { SubBodyComponent } from '../body/sub-body/sub-body.component';
+import { ArticleDetailsComponent } from '../articles/article-details/article-details.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +83,12 @@ import { UpdatePasswordComponent } from '../users/update-password/update-passwor
     PromotionFlushPercentageComponent,
     CreateOrderComponent,
     BodyComponent,
+    ArticleComponent,
+    SubBodyComponent,
+    CatBodyComponent,
+    PromotionArticlesComponent,
+    ArticlesByNameComponent,
+    ArticleDetailsComponent,
   ],
   imports: [CommonModule, ShopRoutingModule, FormsModule, HttpClientModule],
 })

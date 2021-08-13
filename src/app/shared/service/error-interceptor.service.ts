@@ -30,8 +30,10 @@ export class ErrorInterceptorService implements HttpInterceptor {
         } else {
           console.log('this is server side error');
           errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-          this.authService.logout();
-          this.router.navigate(['/', 'auth', 'login']);
+          if (error.status === 401 || error.status === 403) {
+            this.authService.logout();
+            this.router.navigate(['/', 'auth', 'login']);
+          }
         }
         console.log(errorMsg);
         return throwError(errorMsg);

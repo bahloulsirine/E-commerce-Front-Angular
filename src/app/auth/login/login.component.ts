@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
     this.restAuth();
   }
   loginUser() {
+    console.log(this.userAuth);
+
     this.authService.loginUser(this.userAuth).subscribe(
       (data: JwtResponse) => {
         console.log(data);

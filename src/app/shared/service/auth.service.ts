@@ -11,6 +11,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   loginUser(user: UserAuth) {
+    console.log('*************************');
+
     return this.http.post(environment.URL + 'auth/authentication', user);
   }
   getToken() {

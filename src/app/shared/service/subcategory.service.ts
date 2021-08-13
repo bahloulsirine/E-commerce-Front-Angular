@@ -30,17 +30,7 @@ export class SubcategoryService {
     return this.http.get(environment.URL + 'subcategory/categoryId/' + id);
   }
 
-  //  groupBy(list:any, keyGetter:any) {
-  //   const map = new Map();
-  //   list.forEach(({{this.getSubcategories}}) => {
-  //        const key = keyGetter(item);
-  //        const collection = map.get(key);
-  //        if (!collection) {
-  //            map.set(key, [item]);
-  //        } else {
-  //            collection.push(item);
-  //        }
-  //   });
-  //   return map;
-  // }
+  getCategoryRequest() {
+    return this.http.get(environment.URL + 'subcategory/categoryRequest');
+  }
 }

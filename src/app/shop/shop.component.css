@@ -5,3 +5,6 @@ button {
 button:hover {
   border-color: black;
 }
+body {
+  background-color: rgb(223, 202, 226);
+}

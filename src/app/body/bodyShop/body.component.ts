@@ -12,11 +12,7 @@ import { Article } from 'src/models/basket.model';
 export class BodyComponent implements OnInit {
   articles: Article[];
   amount: number;
-  constructor(
-    private articleService: ArticleService,
-    private basketService: BasketService,
-    private router: Router
-  ) {}
+  constructor(private articleService: ArticleService, private router: Router) {}
 
   ngOnInit(): void {
     this.reloadData();
@@ -29,21 +25,6 @@ export class BodyComponent implements OnInit {
     });
   }
 
-  addBasket(articleId: number) {
-    this.basketService
-      .createBasketArticle(this.amount, articleId)
-      .subscribe((data) => {
-        console.log('naw basketArticle', data);
-      });
-  }
-  addAmount() {
-    this.amount = this.amount + 1;
-  }
-  subAmount() {
-    if (this.amount > 0) {
-      this.amount = this.amount - 1;
-    }
-  }
   promotion() {
     this.router.navigate(['promotionArticles']);
   }

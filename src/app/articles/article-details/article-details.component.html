@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-5 col-md-7">
+    <img src="{{ article.url }}" />
+  </div>
+  <div class="col-xs-5 col-md-5">
+    <a style="color: rgb(235, 25, 154)" fxLayoutAlign="center center">
+      <h1>{{ article.name }}</h1>
+    </a>
+    <h3>Description:</h3>
+    <p>{{ article.description }}</p>
+    <h3>Stock:</h3>
+    <p>{{ article.stock }}</p>
+    <h3>Color:</h3>
+    <p>{{ article.color }}</p>
+    <div *ngIf="percentage == 0">
+      <h3>Price:</h3>
+      <p>{{ article.price }} DT</p>
+      <br />
+    </div>
+    <div *ngIf="percentage != 0">
+      <h3>Price:</h3>
+      <del>{{ article.price }} DT </del>
+      <strong>{{ newPrice() }} DT</strong>
+    </div>
+    <div>
+      <div class="input-group">
+        <input
+          style="width: 50px"
+          type="text"
+          class="form-control"
+          id="code"
+          required
+          [(ngModel)]="amount"
+          name="code"
+        />
+        <button (click)="addAmount()"><strong>+</strong></button>
+        <button (click)="subAmount()"><strong>-</strong></button>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-success"
+        (click)="addBasket(article.id)"
+      >
+        Add To Basket
+      </button>
+    </div>
+  </div>
+</div>

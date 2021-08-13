@@ -7,7 +7,7 @@ import { UserService } from 'src/app/shared/service/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../shared/service/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/models/category.model';
+import { Category, CategoryRequest } from 'src/models/category.model';
 
 @Component({
   selector: 'app-header',
@@ -31,47 +31,41 @@ export class HeaderComponent implements OnInit {
   id: number;
   user: User;
   categories: any;
+  categoryRequest: CategoryRequest[];
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((data: User) => {
       this.user = data;
       this.id = this.user.id;
     });
-    this.getCategories();
-
-    // this.getSubcategories();
+    this.categoryRequest = null;
+    this.getCategory();
   }
-  // getSubcategories() {
-  //   this.subcategoryService
-  //     .getSubcategories()
-  //     .subscribe((data: SubCategory[]) => {
-  //       this.subcategories = data;
-  //       console.log(this.subcategories);
-  //       for (var subcategory of this.subcategories) {
-  //         if (this.categories.includes(subcategory.category) == false) {
-  //           this.categories.push(subcategory.category);
-  //         }
-  //       }
-  //       console.log(this.categories);
-  //     });
-  // }
   logOut() {
     this.authService.logout();
   }
-  getCategories() {
-    this.categoryService.getAllCategories().subscribe((data) => {
-      this.categories = data;
-      this.categories.forEach((x) => {
-        this.filterByCategory(x.id);
-      });
-    });
-  }
-  filterByCategory(categoryId) {
+  // getCategories() {
+  //   this.categoryService.getAllCategories().subscribe((data) => {
+  //     this.categories = data;
+  //     this.categories.forEach((x) => {
+  //       this.filterByCategory(x.id);
+  //     });
+  //   });
+  // }
+  // filterByCategory(categoryId) {
+  //   this.subcategoryService
+  //     .getSubcategoriesByCategoryId(categoryId)
+  //     .subscribe((data) => {
+  //       this.categories[categoryId - 1].subcategory = data;
+  //       console.log(this.categories);
+  //     });
+  // }
+  getCategory() {
     this.subcategoryService
-      .getSubcategoriesByCategoryId(categoryId)
-      .subscribe((data) => {
-        this.categories[categoryId].subcategory = data;
-        console.log(this.categories);
+      .getCategoryRequest()
+      .subscribe((data: CategoryRequest[]) => {
+        this.categoryRequest = data;
+        console.log('****************************', data);
       });
   }
 }

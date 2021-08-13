@@ -10,7 +10,14 @@
           class="card-img-top"
           src="{{ article.url }}"
           alt="Card image cap"
+          [routerLink]="[
+            '/',
+            'articleDetails',
+            article.id,
+            promotion.percentagePromotion
+          ]"
         />
+
         <div class="card-body">
           <h3 style="color: blueviolet">
             {{ promotion.percentagePromotion }}%
@@ -68,13 +75,19 @@
           class="card-img-top"
           src="{{ article.url }}"
           alt="Card image cap"
+          [routerLink]="[
+            '/',
+            'articleDetails',
+            article.id,
+            promotion.percentagePromotion
+          ]"
         />
         <div class="card-body">
           <h3 style="color: blueviolet">
             {{ promotion.percentagePromotion }}%
           </h3>
           <h4 style="color: rgb(235, 16, 118)">
-            {{ promotion.promotionExpiration }}
+            {{ promotion.promotionExpiration | date }}
           </h4>
           <del>{{ article.price }} DT </del>
           <strong

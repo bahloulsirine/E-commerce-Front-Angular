@@ -33,6 +33,10 @@ export class ArticleService {
   getArticle(id: number) {
     return this.http.get(environment.URL + 'article/' + id);
   }
+  getArticleToUpdate(id: number) {
+    return this.http.get(environment.URL + 'article/getToUpdate/' + id);
+  }
+
   getArticleByCode(code: number) {
     return this.http.get(environment.URL + 'article/code/' + code);
   }

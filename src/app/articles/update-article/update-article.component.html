@@ -1,121 +1,124 @@
-<h3>Update Article</h3>
-<div *ngIf="!submitted && !error" style="width: 400px">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Code</label>
-      <input
-        type="text"
-        class="form-control"
-        id="code"
-        required
-        [(ngModel)]="article.code"
-        name="code"
-        disabled
-      />
-    </div>
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        required
-        [(ngModel)]="article.name"
-        name="name"
-      />
-    </div>
+<body>
+  <div *ngIf="!submitted" style="width: 400px">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <h3>Update Article</h3>
+        <label for="name">Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="code"
+          required
+          [(ngModel)]="article.code"
+          name="code"
+          disabled
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="article.name"
+          name="name"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="name">Stock</label>
-      <input
-        type="text"
-        class="form-control"
-        id="stock"
-        required
-        [(ngModel)]="article.stock"
-        name="stock"
-      />
-    </div>
+      <div class="form-group">
+        <label for="name">Stock</label>
+        <input
+          type="text"
+          class="form-control"
+          id="stock"
+          required
+          [(ngModel)]="article.stock"
+          name="stock"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="name">Description</label>
-      <input
-        type="text"
-        class="form-control"
-        id="description"
-        required
-        [(ngModel)]="article.description"
-        name="description"
-      />
-    </div>
+      <div class="form-group">
+        <label for="name">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="article.description"
+          name="description"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="name">Color</label>
-      <input
-        type="text"
-        class="form-control"
-        id="color"
-        required
-        [(ngModel)]="article.color"
-        name="color"
-      />
-    </div>
+      <div class="form-group">
+        <label for="name">Color</label>
+        <input
+          type="text"
+          class="form-control"
+          id="color"
+          required
+          [(ngModel)]="article.color"
+          name="color"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="name">Weight</label>
-      <input
-        type="text"
-        class="form-control"
-        id="weight"
-        required
-        [(ngModel)]="article.weight"
-        name="weight"
-      />
-    </div>
+      <div class="form-group">
+        <label for="name">Weight</label>
+        <input
+          type="text"
+          class="form-control"
+          id="weight"
+          required
+          [(ngModel)]="article.weight"
+          name="weight"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="name">Price</label>
-      <input
-        type="text"
-        class="form-control"
-        id="price"
-        required
-        [(ngModel)]="article.price"
-        name="price"
-      />
-    </div>
+      <div class="form-group">
+        <label for="name">Price</label>
+        <input
+          type="text"
+          class="form-control"
+          id="price"
+          required
+          [(ngModel)]="article.price"
+          name="price"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="name">TVA</label>
-      <input
-        type="text"
-        class="form-control"
-        id="tva"
-        required
-        [(ngModel)]="article.tva"
-        name="tva"
-      />
-    </div>
-    <div class="form-group">
-      <label for="name">Image</label>
-      <input
-        type="text"
-        class="form-control"
-        id="url"
-        required
-        [(ngModel)]="article.url"
-        name="url"
-      />
-    </div>
+      <div class="form-group">
+        <label for="name">TVA</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tva"
+          required
+          [(ngModel)]="article.tva"
+          name="tva"
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">Image</label>
+        <input
+          type="text"
+          class="form-control"
+          id="url"
+          required
+          [(ngModel)]="article.url"
+          name="url"
+        />
+      </div>
 
-    <button type="submit" class="btn btn-success">Update Article</button>
-  </form>
-</div>
-<div *ngIf="submitted">
-  <h4>You update your account successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
-</div>
-<div *ngIf="error">
-  <h4>THIS ARTICLE IS NOT YOURS!!!! -_-</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
-</div>
+      <input
+        type="submit"
+        name=""
+        value="Update Article"
+        class="btn btn-success"
+      />
+    </form>
+  </div>
+  <div *ngIf="submitted">
+    <h4>You update your account successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  </div>
+</body>

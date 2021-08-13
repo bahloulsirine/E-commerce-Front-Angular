@@ -14,19 +14,22 @@
         />
       </a>
     </li>
-    <li class="nav-item-img" *ngFor="let category of categories">
+    <li class="nav-item-img" *ngFor="let categoryReq of categoryRequest">
       <a
-        routerLink="categoryArticles/{{ category.id }}"
+        routerLink="categoryArticles/{{ categoryReq.category.id }}"
         class="nav-link"
         routerLinkActive="active"
       >
         <strong>
-          <h4>{{ category.name }}</h4></strong
+          <h4>{{ categoryReq.category.name }}</h4></strong
         >
       </a>
       <div class="sub-menu" style="z-index: 1">
         <ul>
-          <li class="nav-item" *ngFor="let subcategory of category.subcategory">
+          <li
+            class="nav-item"
+            *ngFor="let subcategory of categoryReq.subCategories"
+          >
             <a
               routerLink="subcategoryArticles/{{ subcategory.name }}"
               class="nav-link"

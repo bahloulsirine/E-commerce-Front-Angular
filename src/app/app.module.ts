@@ -22,18 +22,11 @@ import { SubBodyComponent } from './body/sub-body/sub-body.component';
 import { CatBodyComponent } from './body/cat-body/cat-body.component';
 import { PromotionArticlesComponent } from './articles/promotion-articles/promotion-articles.component';
 import { ArticlesByNameComponent } from './articles/articles-by-name/articles-by-name.component';
+import { ArticleComponent } from './body/article/article.component';
+import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AuthComponent,
-    ShopComponent,
-    HeaderComponent,
-    SubBodyComponent,
-    CatBodyComponent,
-    PromotionArticlesComponent,
-    ArticlesByNameComponent,
-  ],
+  declarations: [AppComponent, AuthComponent, ShopComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
